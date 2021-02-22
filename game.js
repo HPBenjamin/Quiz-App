@@ -32,12 +32,15 @@ let progress = 0;
 
 function nextQuestion() {
     hideElements();
-
-    question_number = question_number + 1;
-    progress = question_number * 10;
-    document.getElementById('progress-bar').innerHTML = progress + '%';
-    document.getElementById('progress-bar').style.width = progress + '%';
-    loadQuestion();
+    if (question_number == allQuestions.length) {
+        finishQuiz();
+    } else {
+        question_number = question_number + 1;
+        progress = Math.round((question_number / allQuestions.length) * 100);
+        document.getElementById('progress-bar').innerHTML = progress + '%';
+        document.getElementById('progress-bar').style.width = progress + '%';
+        loadQuestion();
+    }
 }
 
 function loadQuestion() {
@@ -46,7 +49,7 @@ function loadQuestion() {
     document.getElementById('answer2').innerHTML = allQuestions[question_number - 1]['answer_2'];
     document.getElementById('answer3').innerHTML = allQuestions[question_number - 1]['answer_3'];
     document.getElementById('answer4').innerHTML = allQuestions[question_number - 1]['answer_4'];
-    right_answer = allQuestions[0]['right_answer'];
+    right_answer = allQuestions[question_number - 1]['right_answer'];
 }
 
 
@@ -67,3 +70,8 @@ function answer(a) {
     }
 }
 
+function finishQuiz() {
+    document.getElementById('quiz-container').classList.add('d-none');
+    document.getElementById('quiz-finished-container').classList.remove('d-none');
+
+}
