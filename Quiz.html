@@ -11,24 +11,63 @@
   <script src="game.js"></script>
 </head>
 
-<body>
+<body onload="nextQuestion()">
+  <nav class="navbar navbar-light navbar-custom bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="image/question.png" alt="" width="30" height="24" class="d-inline-block align-top">
+        HTML Quiz
+      </a>
+    </div>
+  </nav>
+
   <h1>Das Quiz</h1>
+
+  <div id="right-answer" class="alert alert-success d-none" role="alert">
+    Deine Antwort war richtig!!!
+  </div>
+  <div id="wrong-answer" class="alert alert-danger d-none" role="alert">
+    Die Antwort war leider falsch!!!
+  </div>
 
 
 
 
   <div class="card">
-    <div class="card-body">
-      In diesem Abschnitt wird eine Frage gestellt!!
+    <div class="progress">
+      <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25"
+        aria-valuemin="0" aria-valuemax="100">25%</div>
+    </div>
+    <div class="card-body" id="question">
     </div>
   </div>
   <div class="mt-4">
-    <button class="btn btn-primary">Antwort A</button>
-    <button class="btn btn-primary">Antwort B</button>
-    <button class="btn btn-primary">Antwort C</button>
-    <button class="btn btn-primary">Antwort D</button>
+    <div class="quiz-answer-row">
+      <button onclick="answer(1)" id="answer1" class="btn btn-outline-primary">Antwort A</button>
+      <button onclick="answer(2)" id="answer2" class="btn btn-outline-primary">Antwort B</button>
+    </div>
+    <div class="quiz-answer-row mt-4">
+      <button onclick="answer(3)" id="answer3" class="btn btn-outline-primary">Antwort C</button>
+      <button onclick="answer(4)" id="answer4" class="btn btn-outline-primary">Antwort D</button>
+    </div>
+
   </div>
 
+  <div class="mt-4">
+    <button onclick="nextQuestion()" id="next-btn" class="btn btn-info d-none">Nächste Frage</button>
+  </div>
+
+
+  <!-- Copyright -->
+  <div class="footer-custom">
+    <div class="text-center p-3" style="background-color: rgba(77, 79, 82, 0.632);">
+      © 2020 Copyright:
+      <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    </div>
+  </div>
+  <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
 </body>
 
 </html>
